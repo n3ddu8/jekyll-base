@@ -123,9 +123,19 @@ podman build .
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-While this container can be launched locally using the instructions above, it is really meant to be used as a base image for downstream workflows. For instance, to use it as a base in a new Dockerfile add the line:
+While this container can be launched locally using the instructions above, it is really meant to be used as a base image for downstream workflows. For instance, to use it in a Jekyll project, create a Containerfile with the following contents:
 ```sh
 FROM ghcr.io/n3ddu8/jekyll-base:main
+
+EXPOSE 4000
+
+WORKDIR /usr/src/my-website
+
+COPY . .
+
+RUN bundle install
+
+CMD ["jekyll", "serve", "--host", "0.0.0.0"]
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
