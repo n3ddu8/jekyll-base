@@ -4,6 +4,7 @@ RUN apk update
 RUN apk add \
 
     build-base \
+    git \
     ruby \
     ruby-dev \
     ruby-irb
